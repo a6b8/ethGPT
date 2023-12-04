@@ -1,0 +1,4281 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "test",
+        "description": "abc",
+        "version": "0.32.2"
+    },
+    "servers": [
+        {
+            "url": "https://deep-index.moralis.io/api/v2.2"
+        }
+    ],
+    "paths": {
+        "/wallets/{address}/chains": {
+            "get": {
+                "description": "Get chain activity by wallet",
+                "operationId": "getChainActivityByWallet_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "Wallet address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chains",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chains to query.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/balance": {
+            "get": {
+                "description": "Get native balance by wallet",
+                "operationId": "getNativeBalanceByWallet_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address from which the native balance will be checked",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number from which the balances should be checked",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/wallets/balances": {
+            "get": {
+                "description": "Get native balance for multiple wallets",
+                "operationId": "getNativeBalancesForAddresses_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number on which the balances should be checked",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "wallet_addresses",
+                        "in": "query",
+                        "required": true,
+                        "description": "The addresses to get metadata for (max 25 addresses)",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/nft": {
+            "get": {
+                "description": "Get NFTs by wallet",
+                "operationId": "getWalletNFTs_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the wallet",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "decimal",
+                                "hex"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "exclude_spam",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should spam NFTs be excluded from the result?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "token_addresses",
+                        "in": "query",
+                        "required": false,
+                        "description": "The non-fungible token (NFT) addresses to get balances for",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "normalizeMetadata",
+                        "in": "query",
+                        "required": false,
+                        "description": "The option to enable metadata normalization. Learn more about metadata normalization here.",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "media_items",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should preview media data be returned? Learn more about media items here.",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/nft/collections": {
+            "get": {
+                "description": "Get collections by wallet",
+                "operationId": "getWalletNFTCollections_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The wallet address of the owner of NFTs in the collections",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "exclude_spam",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should spam NFTs be excluded from the result?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/erc20": {
+            "get": {
+                "description": "Get ERC20 token balance by wallet",
+                "operationId": "getWalletTokenBalances_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address from which token balances will be checked",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number from which the balances should be checked",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "token_addresses",
+                        "in": "query",
+                        "required": false,
+                        "description": "The addresses to get balances for (optional)",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/verbose": {
+            "get": {
+                "description": "Get decoded transactions by wallet",
+                "operationId": "getDecodedWalletTransaction_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the wallet",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transactionsProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the transactions.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transactions (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the transactions up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page). Learn more on cursor pagination here.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the internal transactions.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "internal_transactions"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}": {
+            "get": {
+                "description": "Get native transactions by wallet",
+                "operationId": "getWalletTransactions_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the wallet",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transactionsProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the transactions.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transactions (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the transactions up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page). Learn more on cursor pagination here.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the internal transactions.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "internal_transactions"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/nft/transfers": {
+            "get": {
+                "description": "Get transfers by wallet",
+                "operationId": "getWalletNFTTransfers_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The wallet address of the sender or recipient of the transfers",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transfersProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "To get the reserves at this block number",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The date from where to get the transfers (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get transfers up until this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/erc20/transfers": {
+            "get": {
+                "description": "Get ERC20 token transfers by wallet",
+                "operationId": "getWalletTokenTransfers_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the wallet",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transactionsProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the transactions.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transactions (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the transactions up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page). Learn more on cursor pagination here.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/resolve/{address}/reverse": {
+            "get": {
+                "description": "ENS Lookup by Address",
+                "operationId": "resolveAddress_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address to be resolved",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/resolve/ens/{domain}": {
+            "get": {
+                "description": "ENS Lookup By Domain",
+                "operationId": "resolveENSDomain_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "path",
+                        "required": true,
+                        "description": "The domain to be resolved",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/resolve/{address}/domain": {
+            "get": {
+                "description": "Unstoppable Lookup by Address",
+                "operationId": "resolveAddressToDomain_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address to be resolved",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/resolve/{domain}": {
+            "get": {
+                "description": "Unstoppable Lookup By Domain",
+                "operationId": "resolveDomain_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "path",
+                        "required": true,
+                        "description": "The domain to be resolved",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "required": false,
+                        "description": "The currency to query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/wallets/{address}/stats": {
+            "get": {
+                "description": "Get wallet stats",
+                "operationId": "getWalletStats_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "Wallet address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/getMultipleNFTs": {
+            "post": {
+                "description": "Get multiple NFTs",
+                "operationId": "getMultipleNFTs_POST",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}": {
+            "get": {
+                "description": "Get NFTs by contract",
+                "operationId": "getContractNFTs_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "totalRanges",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of subranges to split the results into",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "range",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired subrange to query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "normalizeMetadata",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should normalized metadata be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "media_items",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should preview media data be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/{token_id}/metadata/resync": {
+            "get": {
+                "description": "Resync metadata",
+                "operationId": "reSyncMetadata_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "required": false,
+                        "description": "The type of resync to operate",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "uri",
+                                "metadata"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "description": "To define the behaviour of the endpoint",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "sync",
+                                "async"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/{token_id}": {
+            "get": {
+                "description": "Get NFT data",
+                "operationId": "getNFTMetadata_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "decimal",
+                                "hex"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "normalizeMetadata",
+                        "in": "query",
+                        "required": false,
+                        "description": "The option to enable metadata normalization. Learn more about metadata normalization here.",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "media_items",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should preview media data be returned? Learn more about media items here.",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/transfers": {
+            "get": {
+                "description": "Get transfers by contract",
+                "operationId": "getNFTContractTransfers_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from where to get the transfersProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from where to get the transfers.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The date from where to get the transfers (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get transfers up until this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/transfers": {
+            "get": {
+                "description": "Get transfers from block to block",
+                "operationId": "getNFTTransfersFromToBlock_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transfersProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the transfers.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transfers (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The end date from which to get the transfers (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (for getting the next page)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/block/{block_number_or_hash}/nft/transfers": {
+            "get": {
+                "description": "Get transfers by block",
+                "operationId": "getNFTTransfersByBlock_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "block_number_or_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The block number or block hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page). Learn more on cursor pagination here.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/{token_id}/transfers": {
+            "get": {
+                "description": "Get transfers by contract and token ID",
+                "operationId": "getNFTTransfers_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/metadata": {
+            "get": {
+                "description": "Get contract metadata",
+                "operationId": "getNFTContractMetadata_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/sync": {
+            "put": {
+                "description": "Sync NFT contract",
+                "operationId": "syncNFTContract_PUT",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/owners": {
+            "get": {
+                "description": "Get NFT owners",
+                "operationId": "getNFTOwners_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "normalizeMetadata",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should normalized metadata be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "media_items",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should preview media data be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/{token_id}/owners": {
+            "get": {
+                "description": "Get token ID owners",
+                "operationId": "getNFTTokenIdOwners_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "The format of the token ID",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "normalizeMetadata",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should normalized metadata be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "media_items",
+                        "in": "query",
+                        "required": false,
+                        "description": "Should preview media data be returned?",
+                        "schema": {
+                            "type": "boolean",
+                            "enum": [
+                                "false",
+                                "true"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/trades": {
+            "get": {
+                "description": "Get NFT trades",
+                "operationId": "getNFTTrades_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transfersProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number to get the trades from",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transfers (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The end date from which to get the transfers (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "marketplace",
+                        "in": "query",
+                        "required": false,
+                        "description": "Marketplace from which to get the trades (only OpenSea is supported at the moment)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/lowestprice": {
+            "get": {
+                "description": "Get lowest price",
+                "operationId": "getNFTLowestPrice_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of days to look back to find the lowest price\nIf not provided 7 days will be the default",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "marketplace",
+                        "in": "query",
+                        "required": false,
+                        "description": "Marketplace from which to get the trades (only OpenSea is supported at the moment)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/stats": {
+            "get": {
+                "description": "Get collection stats",
+                "operationId": "getNFTCollectionStats_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT collection",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/nft/{address}/{token_id}/stats": {
+            "get": {
+                "description": "Get token stats",
+                "operationId": "getNFTTokenStats_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the NFT collection",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The token id of the NFT collection",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/metadata/symbols": {
+            "get": {
+                "description": "Get ERC20 token metadata by symbols",
+                "operationId": "getTokenMetadataBySymbol_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "symbols",
+                        "in": "query",
+                        "required": true,
+                        "description": "The symbols to get metadata for",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/metadata": {
+            "get": {
+                "description": "Get ERC20 token metadata by contract",
+                "operationId": "getTokenMetadata_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "addresses",
+                        "in": "query",
+                        "required": true,
+                        "description": "The addresses to get metadata for",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/{address}/price": {
+            "get": {
+                "description": "Get ERC20 token price",
+                "operationId": "getTokenPrice_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the token contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the 24hr percent change",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "percent_change"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "exchange",
+                        "in": "query",
+                        "required": false,
+                        "description": "The factory name or address of the token exchange. View supported exchanges here",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "uniswapv2",
+                                "uniswapv3",
+                                "sushiswapv2",
+                                "pancakeswapv1",
+                                "pancakeswapv2",
+                                "pancakeswapv3",
+                                "quickswap",
+                                "quickswapv2",
+                                "traderjoe",
+                                "pangolin",
+                                "spookyswap",
+                                "vvs",
+                                "mm finance",
+                                "crodex",
+                                "camelotv2"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number from which the token price should be checked",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/prices": {
+            "post": {
+                "description": "Get multiple token prices",
+                "operationId": "getMultipleTokenPrices_POST",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the 24hr percent change",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "percent_change"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/{address}/allowance": {
+            "get": {
+                "description": "Get ERC20 token allowance",
+                "operationId": "getTokenAllowance_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the token contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "owner_address",
+                        "in": "query",
+                        "required": true,
+                        "description": "The address of the token owner",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "spender_address",
+                        "in": "query",
+                        "required": true,
+                        "description": "The address of the token spender",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/{address}/transfers": {
+            "get": {
+                "description": "Get ERC20 token transfers by contract",
+                "operationId": "getTokenTransfers_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the token contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the transfersProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the transfers.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the transfers (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get transfers up until this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{pair_address}/reserves": {
+            "get": {
+                "description": "Get DEX token pair reserves",
+                "operationId": "getPairReserves_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "pair_address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The liquidity pair address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number to get the reserves from",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the reserves up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{token0_address}/{token1_address}/pairAddres": {
+            "get": {
+                "description": "Get DEX token pair address",
+                "operationId": "getPairAddress_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "token0_address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The token0 address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token1_address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The token1 address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block number to get the reserves from",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the reserves up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "exchange",
+                        "in": "query",
+                        "required": true,
+                        "description": "The factory name or address of the token exchange",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "uniswapv2",
+                                "uniswapv3",
+                                "sushiswapv2",
+                                "pancakeswapv1",
+                                "pancakeswapv2",
+                                "quickswap",
+                                "quickswapv2",
+                                "traderjoe",
+                                "pangolin",
+                                "spookyswap",
+                                "vvs",
+                                "camelotv2"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/erc20/{address}/stats": {
+            "get": {
+                "description": "Get ERC20 token stats",
+                "operationId": "getTokenStats_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the erc20 token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/block/{block_number_or_hash}": {
+            "get": {
+                "description": "Get block by hash",
+                "operationId": "getBlockByHash_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "block_number_or_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The block number or block hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the internal transactions.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "internal_transactions"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/dateToBlock": {
+            "get": {
+                "description": "Get block by date",
+                "operationId": "getBlockByDate_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "description": "Unix date in seconds or a datestring (any format that is accepted by momentjs)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/transaction/{transaction_hash}": {
+            "get": {
+                "description": "Get transaction by hash",
+                "operationId": "getTransactionByHash_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "transaction_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The transaction hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the internal transactions.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "internal_transactions"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/transaction/{transaction_hash}/verbose": {
+            "get": {
+                "description": "Get decoded transaction by hash",
+                "operationId": "getDecodedTransactionByHash_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "transaction_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The transaction hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "required": false,
+                        "description": "If the result should contain the internal transactions.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "internal_transactions"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/transaction/{transaction_hash}/internal-transactions": {
+            "get": {
+                "description": "Get internal transactions by transaction hash",
+                "operationId": "getInternalTransactions_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "transaction_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The transaction hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/logs": {
+            "get": {
+                "description": "Get logs by contract",
+                "operationId": "getContractLogs_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "block_number",
+                        "in": "query",
+                        "required": false,
+                        "description": "The block numberProvide the param 'block_numer' or ('from_block' and / or 'to_block')If 'block_numer' is provided in combination with 'from_block' and / or 'to_block', 'block_number' will will be used",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the logsProvide the param 'block_numer' or ('from_block' and / or 'to_block')If 'block_numer' is provided in combination with 'from_block' and / or 'to_block', 'block_number' will will be used",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the logsProvide the param 'block_numer' or ('from_block' and / or 'to_block')If 'block_numer' is provided in combination with 'from_block' and / or 'to_block', 'block_number' will will be used",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the logs (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.If 'from_date' and the block params are provided, the block params will be used. Please refer to the blocks params sections (block_number,from_block and to_block) on how to use them",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the logs up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.If 'to_date' and the block params are provided, the block params will be used. Please refer to the blocks params sections (block_number,from_block and to_block) on how to use them",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "topic0",
+                        "in": "query",
+                        "required": true,
+                        "description": "topic0",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/{address}/events": {
+            "post": {
+                "description": "Get events by contract",
+                "operationId": "getContractEvents_POST",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "The address of the contract",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The minimum block number from which to get the logsProvide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "to_block",
+                        "in": "query",
+                        "required": false,
+                        "description": "The maximum block number from which to get the logs.Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "The start date from which to get the logs (any format that is accepted by momentjs)Provide the param 'from_block' or 'from_date'If 'from_date' and 'from_block' are provided, 'from_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Get the logs up to this date (any format that is accepted by momentjs)Provide the param 'to_block' or 'to_date'If 'to_date' and 'to_block' are provided, 'to_block' will be used.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "topic",
+                        "in": "query",
+                        "required": true,
+                        "description": "The topic of the event",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "description": "offset",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "The desired page size of the result.",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "The cursor returned in the previous response (used for getting the next page).",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/block/{block_number_or_hash}/stats": {
+            "get": {
+                "description": "Get block stats",
+                "operationId": "getBlockStats_GET",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "block_number_or_hash",
+                        "in": "path",
+                        "required": true,
+                        "description": "The block number or hash",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/contracts-review": {
+            "post": {
+                "description": "Review contracts",
+                "operationId": "reviewContracts_POST",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "query",
+                        "required": false,
+                        "description": "The chain to query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "eth",
+                                "0x1",
+                                "goerli",
+                                "0x5",
+                                "sepolia",
+                                "0xaa36a7",
+                                "polygon",
+                                "0x89",
+                                "mumbai",
+                                "0x13881",
+                                "bsc",
+                                "0x38",
+                                "bsc testnet",
+                                "0x61",
+                                "avalanche",
+                                "0xa86a",
+                                "fantom",
+                                "0xfa",
+                                "palm",
+                                "0x2a15c308d",
+                                "cronos",
+                                "0x19",
+                                "arbitrum",
+                                "0xa4b1",
+                                "gnosis",
+                                "0x64",
+                                "gnosis testnet",
+                                "0x27d8",
+                                "chiliz",
+                                "0x15b38",
+                                "chiliz testnet",
+                                "0x15b32",
+                                "base",
+                                "0x2105",
+                                "base testnet",
+                                "0x14a33"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "comments": {
+        "schemas": {}
+    }
+}
